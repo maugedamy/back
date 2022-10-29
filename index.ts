@@ -43,10 +43,11 @@ app.get("/product/:id", (req, res) => {
  */
 app.post("/product", (req, res) => {
   const { name, marca } = req.body;
+  console.log(name, marca);
   if (!name || !marca)
     return res
       .status(400)
-      .json({ message: "fields 'name' and 'marca' is requiered" });
+      .json({ message: "fields 'name' and 'marca' are required" });
   products.push({ id: new Date().getTime(), name, marca });
   return res.status(200).json(...products.slice(-1));
 });
